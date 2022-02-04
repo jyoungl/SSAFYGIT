@@ -1,4 +1,4 @@
-package com.ssafy.im; 
+package com.ssafy.im;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,9 +35,9 @@ public class D2_2001_파리퇴치 {
 			for(int i = 0; i <= N-M; i++) {
 				for(int j = 0; j <= N-M; j++) {
 					int sum = 0; //파리 개수
-					for(int k = i; k < i+ M; k++) {
-						for(int l = j; l < j+ M; l++) {
-							sum += arr[k][l];
+					for(int k = 0; k < M; k++) {
+						for(int l = 0; l < M; l++) {
+							sum += arr[k+i][l+j];
 						}
 					}	
 					if(sum>max) max = sum;
