@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
  * 4. 정수 N = 움직일 숫자
  * 5. 움직이는 글자
  */
-public class D3_1873_상호의배틀필드 {
+public class D3_1873_상호의배틀필드 { 
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		File file = new File("D3_1873_상호의배틀필드.txt");
