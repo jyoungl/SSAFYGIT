@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-public class BOJ_17298_오큰수 {
+public class BJ_17298_오큰수 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
