@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class BOJ_9012_괄호 {
+public class BJ_9012_괄호 {
 	static ArrayList<Integer> stack = new ArrayList<>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
