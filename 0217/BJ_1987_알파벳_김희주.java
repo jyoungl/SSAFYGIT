@@ -8,14 +8,6 @@ public class BOJ_1987_알파벳 {
     static int[][] deltas = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};//상-좌-하-우
 
     public static void main(String[] args) throws IOException {
-        //출발하기전에 내 위치에 있는 알파벳 저장하기
-        //갈 수 있는지 확인하고 다음으로 이동하기
-        //어떻게 저장하지???? ? ? ?? ? ? ??  --> 26칸짜리 배열을 만들어서 -A 해줘야겠다
-        //그럼 한 번 이동할 때마다 최대 26번씩 체크할텐데 흠
-        //그냥 순서대로 집어넣어야지 ㅎㅎ
-        //cnt이용해서~~
-        //내 위치보다 그 전에 있는 애들 싹 검사함~~ n-1번이겠당
-
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(in.readLine());
 
@@ -37,8 +29,6 @@ public class BOJ_1987_알파벳 {
 
         //출력하기
         System.out.println(result);
-
-
     }
 
     private static void move(int cnt, int r, int c) {
