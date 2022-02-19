@@ -53,13 +53,13 @@ public class D5_1247_최적경로_허은지 {
 		if(cnt==N) { //N명 수열 전부 만들었을 때
 			sum = 0;
 			for(int i = 0; i<N-1; i++) {
-				sum += Math.abs(map[0][cs[i]]-map[0][cs[i+1]]) + Math.abs(map[1][cs[i]]-map[1][cs[i+1]]);
+				sum += Math.abs(map[0][cs[i]+2]-map[0][cs[i+1]+2]) + Math.abs(map[1][cs[i]+2]-map[1][cs[i+1]+2]);
 				//i번째 손님과 i+1번째 손님 사이의 거리 구함
 				//map[0][cs[i]] ==> 만들어진 수열의 값(0<=i<N)이 map의 index값이 되어
 				//[0]일 때는 x좌표를, [1]일 때는 y좌표를 뽑는다
 			}
-			sum += Math.abs(map[0][0]-map[0][cs[0]]) + Math.abs(map[1][0]-map[1][cs[0]]); 		//첫 손님은 무조건 회사와 손님 사이의 거리 더함
-			sum += Math.abs(map[0][1]-map[0][cs[N-1]]) + Math.abs(map[1][1]-map[1][cs[N-1]]); 	//마지막 손님은 무조건 집과 손님 사이의 거리 더함
+			sum += Math.abs(map[0][0]-map[0][cs[0]+2]) + Math.abs(map[1][0]-map[1][cs[0]+2]); 		//첫 손님은 무조건 회사와 손님 사이의 거리 더함
+			sum += Math.abs(map[0][1]-map[0][cs[N-1]+2]) + Math.abs(map[1][1]-map[1][cs[N-1]+2]); 	//마지막 손님은 무조건 집과 손님 사이의 거리 더함
 			ans = Math.min(ans, sum); //sum의 최솟값 구하기
 			return;
 		}
