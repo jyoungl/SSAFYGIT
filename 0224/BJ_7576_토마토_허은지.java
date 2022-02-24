@@ -1,4 +1,4 @@
-package lv24_DFS와BFS;
+package lv24_DFS와BFS; 
 
 import java.util.*;
 import java.io.*;
