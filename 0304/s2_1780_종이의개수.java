@@ -1,4 +1,4 @@
-package lv20_분할정복;
+
 
 import java.io.*;
 import java.util.*;
