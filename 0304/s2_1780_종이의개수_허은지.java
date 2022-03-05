@@ -14,7 +14,7 @@ import java.util.*;
  * 조건
  * 1. 9개로 자르기(변을 3개로 자르기)
  */
-public class s2_1780_종이의개수 {
+public class s2_1780_종이의개수_허은지 {
 	static int m1, zero, p1;
 	static int[][] paper;
 	public static void main(String[] args) throws Exception {

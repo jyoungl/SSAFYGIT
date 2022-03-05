@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * >> i*j 더해서 구하기
  */
-public class b1_2740_행렬곱셈 {
+public class b1_2740_행렬곱셈_허은지 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
