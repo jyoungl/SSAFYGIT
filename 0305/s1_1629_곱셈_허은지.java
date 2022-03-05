@@ -12,7 +12,7 @@ import java.io.*;
  * >> B를 반으로 계속 쪼개서 1이 나오면 계산
  * >> A를 C로 나눠서 나머지를 계산
  */
-public class s1_1629_곱셈 {
+public class s1_1629_곱셈_허은지 {
 	static long A, B, C;
 	static long ans;
 	public static void main(String[] args) throws Exception {
