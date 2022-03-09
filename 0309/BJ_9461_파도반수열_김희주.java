@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class BOJ_9641_파도반수열 {
+public class BOJ_9461_파도반수열 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader in =new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
