@@ -25,5 +25,6 @@
 	<classpathentry kind="src" path="0302"/>
 	<classpathentry kind="src" path="0304"/>
 	<classpathentry kind="src" path="0305"/>
+	<classpathentry kind="src" path="0310"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
