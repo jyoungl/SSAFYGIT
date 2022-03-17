@@ -22,17 +22,15 @@ public class BOJ_1920_수찾기 {
 			int left = 0, right = N - 1;//, result = 0;
 			boolean result = false;
 			while (left <= right) {
-				int half = (left+right)>>1;//메모리가 좀 더 줄어듦
-				int halfVal = A[half];	//이거 썼을 때가 두번째
+				int half = (left+right)>>1;
+				int halfVal = A[half];
 				if (num > halfVal) left = half + 1;
 				else if (num < halfVal) right = half - 1;
 				else if (num == halfVal) {
-//					result = 1;
 					result = true;
 					break;
 				}
 			}
-//			sb.append(result).append("\n");
 			if(result) sb.append("1\n");
 			else sb.append("0\n");
 		}
