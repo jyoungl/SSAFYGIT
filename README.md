@@ -3,7 +3,7 @@
 | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ |
 | 04월 01일  | [1976 여행 가자](https://www.acmicpc.net/problem/1976) | 04월 02일  | [9465 스티커](https://www.acmicpc.net/problem/9465) | 04월 04일  | [4195 친구 네트워크](https://www.acmicpc.net/problem/4195)<br>[20040 사이클 게임](https://www.acmicpc.net/problem/20040)<br>[14503 로봇 청소기](https://www.acmicpc.net/problem/14503) |
 | 04월 05일  | [11725 트리의 부모찾기](https://www.acmicpc.net/problem/11725)<br>[14500 테트로미노](https://www.acmicpc.net/problem/14500) | 04월 06일  |[1167 트리의 지름](https://www.acmicpc.net/problem/1167)<br>[3190 뱀](https://www.acmicpc.net/problem/3190) | 04월 07일  | [1967 트리의 지름](https://www.acmicpc.net/problem/1967)<br>[17135 캐슬 디펜스](https://www.acmicpc.net/problem/17135) |
-| 04월 08일  | [1991 트리 순회](https://www.acmicpc.net/problem/1991) |
+| 04월 08일  | [1991 트리 순회](https://www.acmicpc.net/problem/1991) | 04월 09일 | [5639 이진검색트리](https://www.acmicpc.net/problem/5639)<br>[17281 ⚾](https://www.acmicpc.net/problem/17281) | 04월 12일 | [14499 주사위굴리기](https://www.acmicpc.net/problem/14499) |
 
 # 3월 
 | 날짜        | 문제                                                         | 날짜       | 문제                                                         | 날짜       | 문제                                                         |
