@@ -17,25 +17,17 @@ public class BJ_4811_알약 {
 
 		while (true) {
 			int N = in.nextInt();
-
-			if (N == 0) {
-				break;
-			}
+			if (N == 0)  break;
 
 			for (int i = 3; i <= 30; i++) {
 				long cnt = 0;
-
 				for (int j = 0; j < i; j++) {
 					cnt += dp[j] * dp[i - 1 - j];
 				}
-
 				dp[i] = cnt;
 			}
-
 			sb.append(dp[N] + "\n");
 		}
-
 		System.out.println(sb);
 	}
-
 }
