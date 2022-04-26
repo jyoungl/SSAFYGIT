@@ -7,6 +7,7 @@
 | 04월 15일  | [3954 Brainf＊＊k 인터프리터](https://www.acmicpc.net/problem/3954)<br>[17406 배열돌리기 4](https://www.acmicpc.net/problem/17406) | 04월 16일 | [13699 점화식](https://www.acmicpc.net/problem/13699)<br>[LV3 정수삼각형](https://programmers.co.kr/learn/courses/30/lessons/43105)| 04월 18일 | [4811 알약](https://www.acmicpc.net/problem/4811)<br>[15685 드래곤 커브](https://www.acmicpc.net/problem/15685) |
 | 04월 19일  | [10422 괄호](https://www.acmicpc.net/problem/10422) | 04월 20일 | [2573 빙산](https://www.acmicpc.net/problem/2573) | 04월 21일 | [1670 정상회담 2](https://www.acmicpc.net/problem/1670)<br>[15684 사다리 조작](https://www.acmicpc.net/problem/15684) |
 | 04월 22일  | [11403 경로 찾기](https://www.acmicpc.net/problem/11403) | 04월 23일 | [1389 케빈 베이컨의 6단계 법칙](https://www.acmicpc.net/problem/1389) | 04월 25일 | [LV3 네트워크](https://programmers.co.kr/learn/courses/30/lessons/43162) |
+| 04월 26일  | [10973 이전 수열](https://www.acmicpc.net/problem/10973) |
 
 
 # 3월 
