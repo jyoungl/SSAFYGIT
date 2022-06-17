@@ -21,14 +21,20 @@ public class S4_2003_수들의합2 {
 		
 		int cnt = 0;
 		
-		for (int i = 0; i < N; i++) {
+		outer: for (int i = 0; i < N; i++) {
 			int sum = A[i];
 			if(sum > M) continue;
-			else if(sum == M) cnt++;
+			else if(sum == M) {
+				cnt++;
+				continue;
+			}
 			for (int j = i+1; j < N; j++) {
 				sum += A[j];
-				if(sum > M) continue;
-				else if(sum == M) cnt++;
+				if(sum > M) continue outer;
+				else if(sum == M) {
+					cnt++;
+					continue;
+				}
 			}
 		}
 		
