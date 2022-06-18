@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	class Student implements Comparable<Student> {
+	static class Student implements Comparable<Student> {
 		String name;
 		int k; // 1순위
 		int e; // 2순위
@@ -41,27 +41,28 @@ public class Main {
 			}
 			return 0;
 		}
+	}
 
-		public static void main(String[] args) throws Exception {
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			StringTokenizer st;
-			StringBuilder sb = new StringBuilder();
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
 
-			int tc = Integer.parseInt(br.readLine());
-			PriorityQueue<Student> pq = new PriorityQueue<>();
-			for (int i = 0; i < tc; i++) {
-				st = new StringTokenizer(br.readLine(), " ");
-				String name = st.nextToken();
-				int korea = Integer.parseInt(st.nextToken());
-				int english = Integer.parseInt(st.nextToken());
-				int math = Integer.parseInt(st.nextToken());
-				pq.add(new Student(name, korea, english, math));
-			}
-			for (int i = 0; i < tc; i++) {
-				System.out.println(pq.poll().name);
+		int tc = Integer.parseInt(br.readLine());
+		PriorityQueue<Student> pq = new PriorityQueue<>();
+		for (int i = 0; i < tc; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			String name = st.nextToken();
+			int korea = Integer.parseInt(st.nextToken());
+			int english = Integer.parseInt(st.nextToken());
+			int math = Integer.parseInt(st.nextToken());
+			pq.add(new Student(name, korea, english, math));
+		}
+		for (int i = 0; i < tc; i++) {
+			System.out.println(pq.poll().name);
 //				System.out.println(pq.poll().toString());
-			}
-
 		}
 
 	}
+
+}
