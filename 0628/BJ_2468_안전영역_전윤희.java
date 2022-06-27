@@ -8,7 +8,6 @@ public class BJ_2468_안전영역 {
 	static int[][] place;
 	static boolean[][] isVisited;
 
-	// 우, 하
 	static int[] dr = { 0, 0, 1, -1 };
 	static int[] dc = { 1, -1, 0, 0 };
 
