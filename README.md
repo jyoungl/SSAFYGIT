@@ -2,7 +2,8 @@
 | 날짜        | 문제                                                         | 날짜       | 문제                                                         | 날짜       | 문제                                                         |
 | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ |
 | 07월 01일  | [1406 에디터](https://www.acmicpc.net/problem/1406)<br>[1935 후위 표기식2](https://www.acmicpc.net/problem/1935) | 07월 02일  |[1699 제곱수의 합](https://www.acmicpc.net/problem/1699) | 07월 05일 |[17219 비밀번호 찾기](https://www.acmicpc.net/problem/17219)<br>[7785 회사에 있는 사람](https://www.acmicpc.net/problem/7785) |
-| 07월 06일  | [1743 음식물 피하기](https://www.acmicpc.net/problem/1743)<br>[11048 이동하기](https://www.acmicpc.net/problem/11048) | 07월 07일 | [10819 차이를 최대로](https://www.acmicpc.net/problem/10819)<br>[21736 헌내기는 친구가 필요해](https://www.acmicpc.net/problem/21736)| 07월 10-16일<br>(7월3주차) | [11055 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055)<br>[11057 오르막 수](https://www.acmicpc.net/problem/11057)<br>[1946 신입 사원](https://www.acmicpc.net/problem/1946)<br>[6064 카잉 달력](https://www.acmicpc.net/problem/6064) 
+| 07월 06일  | [1743 음식물 피하기](https://www.acmicpc.net/problem/1743)<br>[11048 이동하기](https://www.acmicpc.net/problem/11048) | 07월 07일 | [10819 차이를 최대로](https://www.acmicpc.net/problem/10819)<br>[21736 헌내기는 친구가 필요해](https://www.acmicpc.net/problem/21736)| 07월 10-16일<br>(7월3주차) | [11055 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055)<br>[11057 오르막 수](https://www.acmicpc.net/problem/11057)<br>[1946 신입 사원](https://www.acmicpc.net/problem/1946)<br>[6064 카잉 달력](https://www.acmicpc.net/problem/6064) | 07월 17일 | [kakao k진수에서 소수 개수 구하기
+](https://school.programmers.co.kr/learn/courses/30/lessons/92335?language=java)| 
 
 
 # 6월
