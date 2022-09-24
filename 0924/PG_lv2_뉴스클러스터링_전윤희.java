@@ -111,3 +111,9 @@ public class Solution2 {
 	}
 
 }
+
+
+/** 원소의 개수 방식으로 접근하면 안되는 이유: 중간에 remove를 하기 때문에 basket2.size()가 변하고, remove 전으로 계산하자니 intersection.size() 값이 0이다.
+		int unionSize = basket1.size() + basket2.size() - intersection.size();
+		System.out.println("test unionSize: "+unionSize);
+**/
