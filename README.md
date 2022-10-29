@@ -2,9 +2,7 @@
 | 날짜        | 문제                                                         | 날짜       | 문제                                                         | 날짜       | 문제                                                         |
 | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ |
 | 09월 18일  | [Lv2 캐시](https://school.programmers.co.kr/learn/courses/30/lessons/17680) | 09월 24일  |[Lv2 뉴스 클러스터링](https://school.programmers.co.kr/learn/courses/30/lessons/17677) | 10월 02일 |[Lv2 오픈 채팅방](https://school.programmers.co.kr/learn/courses/30/lessons/42888) |
-| 10월 09일  | [Lv2 비밀지도](https://school.programmers.co.kr/learn/courses/30/lessons/17681) |
-| 10월 15일  | [Lv1 성격유형 검사하기](https://school.programmers.co.kr/learn/courses/30/lessons/118666) |
-| 10월 23일  | [Lv2 두 큐 합 같게 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/118667) |
+| 10월 09일  | [Lv2 비밀지도](https://school.programmers.co.kr/learn/courses/30/lessons/17681) | 10월 15일  | [Lv1 성격유형 검사하기](https://school.programmers.co.kr/learn/courses/30/lessons/118666) | 10월 23일  | [Lv2 두 큐 합 같게 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/118667) |
 | 10월 29일  | [Lv2 방금 그 곡](https://school.programmers.co.kr/learn/courses/30/lessons/17683)
 
 
