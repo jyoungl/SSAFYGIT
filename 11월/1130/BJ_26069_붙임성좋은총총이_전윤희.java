@@ -5,7 +5,7 @@ import java.util.*;
 
 // 총총이에 꽂히지말고(첫번째를 특별화하지말고 전체를) 일반화 시킬 것
 // 1. 총총이를 set에 넣고
-// 2. set에 있는 동물과 만나면 다시 set에 넣어주고 -contain
+// 2. set에 있는 동물과 만나면 다시 set에 넣어주고 - contain
 // 3. 반복
 public class BJ_26069_붙임성좋은총총이 {
 
