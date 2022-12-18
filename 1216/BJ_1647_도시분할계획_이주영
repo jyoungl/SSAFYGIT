@@ -1,0 +1,86 @@
+package dec16;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
+class Edge implements Comparable<Edge>{
+	int s;
+	int e;
+	int w;
+	
+	Edge(int s, int e, int w){
+		this.s = s;
+		this.e = e;
+		this.w = w;
+	}
+	
+	@Override
+	public int compareTo(Edge o) {
+		return w - o.w;
+	}
+}
+
+public class BJ_1647_도시분할계획_이주영 {
+	static int[] parent;
+	static ArrayList<Edge> list;
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		parent = new int[N+1];
+		list = new ArrayList<>();
+		
+		for(int i=0;i<M;i++) {
+			st = new StringTokenizer(br.readLine());
+			int A = Integer.parseInt(st.nextToken());
+			int B = Integer.parseInt(st.nextToken());
+			int C = Integer.parseInt(st.nextToken());
+			
+			list.add(new Edge(A,B,C));
+		}
+		
+		for(int i=1;i<=N;i++)
+			parent[i] = i;
+		
+		Collections.sort(list);
+		
+		int ans = 0;
+		int maxCost = 0;
+		
+		for(int i=0;i<list.size();i++) {
+			Edge edge = list.get(i);
+			
+			if(find(edge.s) != find(edge.e)) {
+				ans += edge.w;
+				union(edge.s, edge.e);
+				
+				maxCost = edge.w;
+			}
+		}
+		
+		System.out.println(ans - maxCost);
+	}
+	
+	public static void union(int a, int b) {
+		int x = find(a);
+		int y = find(b);
+		
+		if(x != y)
+			parent[y] = x;
+	}
+	
+	public static int find(int a) {
+		if(parent[a] == a)
+			return a;
+		
+		return find(parent[a]);
+	}
+
+}
