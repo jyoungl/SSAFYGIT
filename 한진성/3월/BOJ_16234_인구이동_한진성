@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class BOJ_16234_인구이동_한진성 {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(in.readLine());
+
+		int N = Integer.parseInt(st.nextToken());
+
+		int L = Integer.parseInt(st.nextToken());
+
+		int R = Integer.parseInt(st.nextToken());
+		int day = 0;
+		int[][] arr = new int[N][N];
+		int[][] group = new int[N][N];
+		int[] groupPeoples = new int[N * N];
+		int cnt = 0;
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(in.readLine());
+			for (int j = 0; j < N; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				groupPeoples[cnt] = arr[i][j];
+				group[i][j] = cnt++;
+			}
+
+		}
+
+		int[][] dir = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+		boolean check = false;
+		boolean[][] locked = new boolean[N][N];
+		while (true) {
+			int groupCnt = 9999;
+			check = false;
+			boolean[][] visited = new boolean[N][N];
+			int[] groups = new int[10000];
+			int[][] temp = new int[N][N];
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+
+					if (!visited[i][j]) {
+						List<int[]> list = new ArrayList<>();
+						int sum = 0 + arr[i][j];
+						groupCnt--;
+						// 여기서부터 bfs
+						Queue<int[]> queue = new LinkedList<>();
+						queue.add(new int[] { i, j });
+						visited[i][j] = true;
+						group[i][j] = groupCnt;
+						list.add(new int[] { i, j });
+						while (!queue.isEmpty()) {
+
+							int[] curr = queue.poll();
+
+							for (int d = 0; d < 4; d++) {
+
+								int dx = curr[0] + dir[d][0];
+								int dy = curr[1] + dir[d][1];
+
+								if (dx < 0 || dx >= N || dy < 0 || dy >= N || visited[dx][dy]) {
+									continue;
+								}
+								int dist = Math.abs(arr[curr[0]][curr[1]] - arr[dx][dy]);
+								if (dist >= L && dist <= R) {
+									sum += arr[dx][dy];
+									queue.add(new int[] { dx, dy });
+									visited[dx][dy] = true;
+									group[dx][dy] = groupCnt;
+									check = true;
+									list.add(new int[] { dx, dy });
+								}
+
+							}
+							
+						}
+						for(int k=0;k<list.size();k++) {
+							arr[list.get(k)[0]][list.get(k)[1]] = sum/list.size();
+						}
+					}
+				}
+			}
+
+			if (!check) {
+				break;
+			}
+			day++;
+		}
+
+		System.out.println(day);
+	}
+
+}
