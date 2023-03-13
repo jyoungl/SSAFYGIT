@@ -1,0 +1,96 @@
+import java.util.*;
+import java.io.*;
+
+// tip: each public class is put in its own file
+public class BOJ_9466_텀프로젝트 {
+
+	static int N, arr[], check[];
+	static boolean visited[];
+	static Stack<Integer> stack;
+
+	// tip: arguments are passed via the field below this editor
+	public static void main(String[] args) throws Exception {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		int T = Integer.parseInt(in.readLine());
+
+		for (int tc = 0; tc < T; tc++) {
+
+			N = Integer.parseInt(in.readLine());
+
+			arr = new int[N + 1];
+			check = new int[N + 1];
+			StringTokenizer st = new StringTokenizer(in.readLine());
+			// 한 번이라도 방문한 곳은 무조건 사이클이거나 더이상 사이클을 못 만듦, 따라서 visit배열을 한 번만 초기화.
+			visited = new boolean[N + 1];
+			for (int i = 1; i <= N; i++) {
+				arr[i] = Integer.parseInt(st.nextToken());
+				if (arr[i] == i) {
+					// 자기 자신일 경우 1 처리. 
+					// 1 = 사이클 완성, 2 = 사이클 불가
+					visited[i] = true;
+					check[i] = 1;
+				}
+			}
+			// 스택하고 상태 배열 2가지를 사용
+			stack = new Stack<>();
+			for (int i = 1; i <= N; i++) {
+				// 만약 사이클이 불가능 하거나, 완성된 상태면 넘기고
+				if (check[i] == 1 || check[i] == 2) {
+					continue;
+				}
+				// 아니면 dfs
+				dfs(i);
+			}
+			int cnt = 0;
+			for (int i = 1; i <= N; i++) {
+				if (check[i] == 2) {
+					cnt++;
+				}
+			}
+			System.out.println(cnt);
+		}
+
+	}
+
+	public static void dfs(int x) {
+		// 일단 스택에 계속 추가
+		stack.push(x);
+		visited[x] = true;
+		// 방문한 적이 있는 경우
+		if (visited[arr[x]]) {
+			boolean chk = false;
+			// 만약 방문한 위치가 1, 2와 같이 닫혀있으면 사이클 불가능 하다는 뜻이므로, 꺼내기.
+			if (check[arr[x]] == 1 || check[arr[x]] == 2) {
+				check[x] = 2;
+				stack.pop();
+			} 
+			// 위의 상황이 아닐 경우, 방문한 스택에서 하나씩 꺼내면서 1 또는 2 부여
+			while (!stack.isEmpty()) {
+				int cur = stack.pop();
+				//
+				if (!chk) {
+					// 스택에서 꺼낸 게 arr[x]와 같지 않더라도, arr[x]가 닫혀있는 상태(1 또는 2)일경우 무조건 사이클 불가능
+					if (check[arr[x]] == 1 || check[arr[x]] == 2) {
+						check[cur] = 2;
+					} else {
+						check[cur] = 1;
+					}
+				} else {
+					check[cur] = 2;
+				}
+				// 스택에서 꺼낸 게 arr[x]와 같은 경우, 그 이후 스택에 남아있는 값은 모두 2(사이클 불가)
+				if (cur == arr[x]) {
+					chk = true;
+				}
+
+			}
+//			System.out.println(Arrays.toString(check));
+			return;
+			
+		} else { // 방문 하지 않은 경우 재귀
+			dfs(arr[x]);
+		}
+
+	}
+}
