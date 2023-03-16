@@ -1,0 +1,215 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class BOJ_19237_어른상어_한진성 {
+
+	static int N, M, K;
+	static int[][] arr;
+	static Smell[][] smellArr;
+	static int[][] dirMeta = new int[][] { { 0, 0 }, { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+	static List<Shark> list;
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(in.readLine());
+		// 격자 크기
+		N = Integer.parseInt(st.nextToken());
+		// 상어의 수
+		M = Integer.parseInt(st.nextToken());
+		// 냄새가 사라지는 시간
+		K = Integer.parseInt(st.nextToken());
+		arr = new int[N][N];
+		smellArr = new Smell[N][N];
+		list = new ArrayList<>();
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(in.readLine());
+			for (int j = 0; j < N; j++) {
+
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				smellArr[i][j] = new Smell(null, 0);
+				if (arr[i][j] != 0) {
+					Shark shark = new Shark(i, j, arr[i][j]);
+					list.add(shark);
+					smellArr[i][j] = new Smell(shark, K);
+				}
+			}
+		}
+		Collections.sort(list);
+
+		st = new StringTokenizer(in.readLine());
+
+		// 상어 초기 방향
+		for (int i = 0, n = list.size(); i < n; i++) {
+			list.get(i).dir = Integer.parseInt(st.nextToken());
+		}
+
+		// 상어 이동 알고리즘 세팅
+		for (int i = 0, n = list.size(); i < n; i++) {
+			for (int j = 1; j <= 4; j++) {
+				st = new StringTokenizer(in.readLine());
+				for (int k = 1; k <= 4; k++) {
+					list.get(i).moveDir[j][k] = Integer.parseInt(st.nextToken());
+				}
+			}
+		}
+		int answer = 0;
+		while (true) {
+//			for(int i=0;i<list.size();i++) {
+//				System.out.print(list.get(i).num + " ");
+//			}
+//			System.out.println();
+			if(list.size() == 1) {
+				break;
+			}
+			answer++;
+			if(answer > 1000) {
+				answer = -1;
+				break;
+			}
+			// 진행방식
+			// 1. 상어의 이동 방향 결정 - 여기서 일단 바로 이동시킴, 상어 겹치면 잡아먹음
+			for (int i = 0, n = list.size(); i < n; i++) {
+				Shark nowShark = list.get(i);
+				int[] dirNum = nowShark.getDir(nowShark.dir);
+//				System.out.println("nowSharkdir : " + nowShark.dir);
+				boolean firstCheck = false;
+				// 일단 냄새 없는 칸 부터 정하기
+				for (int d = 1; d <= 4; d++) {
+					int dx = nowShark.x + dirMeta[dirNum[d]][0];
+					int dy = nowShark.y + dirMeta[dirNum[d]][1];
+
+					if (dx < 0 || dx >= N || dy < 0 || dy >= N || smellArr[dx][dy].shark != null) {
+						continue;
+					}
+
+					// 상어 방향 결정
+					firstCheck = true;
+					nowShark.dir = dirNum[d];
+
+					break;
+				}
+
+				if (!firstCheck) {
+
+					for (int d = 1; d <= 4; d++) {
+						int dx = nowShark.x + dirMeta[dirNum[d]][0];
+						int dy = nowShark.y + dirMeta[dirNum[d]][1];
+						if (dx < 0 || dx >= N || dy < 0 || dy >= N
+								|| (smellArr[dx][dy].shark != null && smellArr[dx][dy].shark.num != nowShark.num)) {
+							continue;
+						}
+						nowShark.dir = dirNum[d];
+						break;
+					}
+
+				}
+			}
+			// 2. 모든 상어가 동시에 이동함 ( 1번부터 이동하고, 상어가 있는 곳에 이동을 하려 하면 그 상어는 죽은 상어임.)
+			for (int i = 0, n = list.size(); i < n; i++) {
+				list.get(i).move();
+			}
+			for (int i = list.size()-1; i >= 0; i--) {
+				if(list.get(i).isDie) {
+					list.remove(i);
+				}
+			}
+			// 2-1. 냄새 뿌리기 전에, 냄새 카운트 감소
+			for(int i=0;i<N;i++) {
+				for(int j=0;j<N;j++) {
+					if(smellArr[i][j].shark != null) {
+						smellArr[i][j].cnt--;
+						if(smellArr[i][j].cnt == 0) {
+							smellArr[i][j].shark = null;
+						}
+					}
+				}
+			}
+			// 3. 이동 후 냄새를 뿌림 ( 냄새는 상어 번호 + M )
+			for(int i=0,n=list.size();i<n;i++) {
+				Shark nowShark = list.get(i);
+//				System.out.println("X : " + nowShark.x + "Y : " + nowShark.y);
+				smellArr[nowShark.x][nowShark.y].shark = nowShark;
+				smellArr[nowShark.x][nowShark.y].cnt = K;
+			}
+//			for(int i=0;i<N;i++) {
+//				for(int j=0;j<N;j++) {
+//					System.out.print(smellArr[i][j].cnt);
+//				}
+//				System.out.println();
+//			}
+//			System.out.println("=======================================");
+//			for(int i=0;i<N;i++) {
+//				for(int j=0;j<N;j++) {
+//					System.out.print(arr[i][j]);
+//				}
+//				System.out.println();
+//			}
+		}
+		// 3-1. 같은 상어가 겹치면 순서가 앞인 상어가 이김
+		System.out.println(answer);
+	}
+	
+	static class Shark implements Comparable<Shark> {
+
+		int x;
+		int y;
+		int num;
+		int dir;
+		boolean isDie = false;
+		int[][] moveDir = new int[5][5];
+
+		public Shark(int x, int y, int num) {
+			super();
+			this.x = x;
+			this.y = y;
+			this.num = num;
+		}
+
+		public int[] getDir(int dir) {
+			return moveDir[dir];
+		}
+
+		public void move() {
+			arr[this.x][this.y] = 0;
+			this.x = this.x + dirMeta[this.dir][0];
+			this.y = this.y + dirMeta[this.dir][1];
+			if (arr[this.x][this.y] == 0) {
+				arr[this.x][this.y] = this.num;
+			}else {
+				this.isDie = true;
+			}
+		}
+
+		@Override
+		public int compareTo(Shark o) {
+			// TODO Auto-generated method stub
+			return this.num - o.num;
+		}
+
+	}
+
+	static class Smell {
+		Shark shark;
+		int cnt;
+
+		public Smell() {
+		}
+
+		public Smell(Shark shark, int cnt) {
+			this.shark = shark;
+			this.cnt = cnt;
+		}
+
+		public void smellRemove() {
+			this.shark = null;
+		}
+
+	}
+
+}
