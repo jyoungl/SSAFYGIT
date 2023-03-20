@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class BOJ_20922_겹치는건싫어_한진성 {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(in.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+
+        int K = Integer.parseInt(st.nextToken());
+        int[] arr = new int[N];
+        Map<Integer, Integer> map = new HashMap<>();
+        st = new StringTokenizer(in.readLine());
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+        int start = 0;
+        int end = 0;
+        map.put(arr[0], 1);
+        int cnt = 1;
+        for (start = 1; start < N; ) {
+            Integer count = map.get(arr[start]);
+            if (count == null) {
+                map.put(arr[start], 1);
+                start++;
+            } else if (count < K) {
+                map.put(arr[start], count + 1);
+                start++;
+            } else {
+                while (true) {
+                    if (arr[start] == arr[end]) {
+                        int j = map.get(arr[end]);
+                        map.put(arr[end], j - 1);
+                        end++;
+                        break;
+                    } else {
+                        int j = map.get(arr[end]);
+                        map.put(arr[end], j - 1);
+                        end++;
+                    }
+                }
+                map.put(arr[start], map.get(arr[start]) + 1);
+                start++;
+            }
+            cnt = Math.max(cnt, start - end);
+        }
+        System.out.println(cnt);
+    }
+
+}
