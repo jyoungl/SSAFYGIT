@@ -1,0 +1,138 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class BOJ_20056_마법사상어와파이어볼_한진성 {
+
+	static int dir[][] = new int[][] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 },
+			{ -1, -1 } };
+
+	static List<Fireball> list;
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(in.readLine());
+
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+
+		list = new ArrayList<>();
+		for (int i = 0; i < M; i++) {
+			st = new StringTokenizer(in.readLine());
+			int r = Integer.parseInt(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
+			int m = Integer.parseInt(st.nextToken());
+			int s = Integer.parseInt(st.nextToken());
+			int d = Integer.parseInt(st.nextToken());
+
+			list.add(new Fireball(r, c, m, d, s));
+
+		}
+
+		for (int t = 0; t < K; t++) {
+			List<Fireball>[][] fireballList = new ArrayList[N][N];
+			for (int k = 0, n = list.size(); k < n; k++) {
+				Fireball fireball = list.get(k);
+				fireball.r = (fireball.r + dir[fireball.d][0] * fireball.s);
+
+				
+				while (fireball.r >= N) {
+					fireball.r -= N;
+				}
+				while (fireball.r < 0) {
+					fireball.r += N;
+				}
+				fireball.c = (fireball.c + dir[fireball.d][1] * fireball.s);
+
+				while(fireball.c >= N) {
+					fireball.c -= N;
+				}
+				while(fireball.c < 0) {
+					fireball.c += N;
+				}
+				if (fireballList[fireball.r][fireball.c] == null) {
+					fireballList[fireball.r][fireball.c] = new ArrayList<>();
+					fireballList[fireball.r][fireball.c].add(fireball);
+				} else {
+					fireballList[fireball.r][fireball.c].add(fireball);
+				}
+			}
+			List<Fireball> newlist = new ArrayList<>();
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					int check = -1;
+					int m = 0;
+					int s = 0;
+
+					if (fireballList[i][j] == null) {
+						continue;
+					}
+					if (fireballList[i][j].size() == 0) {
+						continue;
+					}
+
+					if (fireballList[i][j].size() == 1) {
+						newlist.add(fireballList[i][j].get(0));
+						continue;
+					}
+
+					for (int k = fireballList[i][j].size() - 1; k >= 0; k--) {
+						Fireball fireball = fireballList[i][j].get(k);
+						m += fireball.m;
+						s += fireball.s;
+						if (check == -1) {
+							check = fireball.d % 2;
+						}
+						if (check != fireball.d % 2) {
+							check = -9;
+						}
+					}
+					if (m / 5 == 0) {
+						continue;
+					}
+					int cur = 0;
+					if (check == -9) {
+						cur = 1;
+					}
+					for (int d = 0; d < 4; d++) {
+
+						newlist.add(new Fireball(i, j, m / 5, cur, s / fireballList[i][j].size()));
+						cur += 2;
+					}
+
+				}
+			}
+			list = newlist;
+		}
+		int sum =0;
+		for(int i=0;i<list.size();i++) {
+			sum += list.get(i).m;
+		}
+		
+		System.out.println(sum);
+	}
+}
+
+class Fireball {
+
+	int r;
+	int c;
+	int m;
+	int d;
+	int s;
+
+	public Fireball(int r, int c, int m, int d, int s) {
+		super();
+		this.r = r;
+		this.c = c;
+		this.m = m;
+		this.d = d;
+		this.s = s;
+	}
+
+}
